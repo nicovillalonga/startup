@@ -1,0 +1,25 @@
+body{
+    background-color: lightblue;
+}
+
+#divHidden {
+    display: none;
+}
+
+.sideBar{
+    width: 20em;
+    float: right;
+    background-color: rgba(50, 100, 255, 0.4);
+    padding-bottom: 5px;
+}
+#content {
+    padding-top: 5%;
+}
+
+.tweet{
+    background-color: rgba(50, 100, 255, 0.5);
+}
+
+.tweet:hover{
+    background-color: lightblue;
+}
