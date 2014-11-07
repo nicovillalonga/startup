@@ -2,7 +2,7 @@ body{
     background-color: lightblue;
 }
 
-#divHidden {
+.divHidden {
     display: none;
 }
 
@@ -12,7 +12,7 @@ body{
     background-color: rgba(50, 100, 255, 0.4);
     padding-bottom: 5px;
 }
-#content {
+.content {
     padding-top: 5%;
 }
 
@@ -22,4 +22,9 @@ body{
 
 .tweet:hover{
     background-color: lightblue;
+}
+
+
+.response {
+    width: 150px;
 }
