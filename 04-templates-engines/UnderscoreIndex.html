@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Underscore Templtes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    
+    <meta charset="UTF-8"> 
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+        
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="js/scriptUnderscore.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="templateContent">
+                <script id="template" type="text/template">
+                    <div class="mainDetails">
+                    
+                        <div class="photo">
+                            <img src="<%= foto %>" width="200" height="200">
+                        </div>
+
+
+                        <div class="name">
+                            <h1><%= nombre %> <%= apellido %></h1>
+                            <h4><%= locationn.pais %> - <%= locationn.ciudad %></h4>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="mainArea">
+
+                        <section>
+                            <div class="sectionTitle">                    
+                                    <h1>Estudios</h1>
+                            </div>
+
+                            <div class="sectionContent">
+                                <% _.each(estudios, function(estudio){ %>
+                                    <article>
+                                            <h2><%= estudio.institucion %></h2>
+                                            <p class="subDetails"><%= estudio.tipo %> <% if (estudio.fechaFin) { %> - año terminado:  <%= estudio.fechaFin %>                                                                               <% } else { %> - Cursando <% } %></p>
+                                            <p>Titulo: <%= estudio.titulo %></p>
+                                    </article>
+                                <% }); %>
+                            </div>
+                            <div class="clear"></div>
+                        </section>
+
+
+                        <section>
+                            <div class="sectionTitle">
+                                <h1>Idiomas</h1>
+                            </div>
+
+                            <div class="sectionContent">
+                                <% _.each(idiomas, function(idioma){ %>
+                                    <article>
+                                        <h2> <%= idioma.idioma %></h2>
+                                        <p>Examenes: <%= idioma.examenes %></p>
+                                    </article>
+                                <% }); %>
+                            </div>
+                            <div class="clear"></div>
+                        </section>
+
+
+                        <section>
+                            <div class="sectionTitle">
+                                <h1>Trabajos</h1>
+                            </div>
+
+                            <div class="sectionContent">
+                                <% _.each(trabajos, function(trabajo){ %>
+                                    <article>
+                                        <h2><%= trabajo.empresa %></h2>
+                                        <p class="subDetails">Desde: <%= trabajo.fechaIni %></p>
+                                        <p class="subDetails">Hasta: <%= trabajo.fechaFin %></p>
+                                        <h5>Puesto: <%= trabajo.puesto %></h5>
+                                        <p>Descripcion: <%= trabajo.descripcion %></p>
+                                    </article>
+                                <% }); %>
+                            </div>
+                            <div class="clear"></div>
+                        </section>
+                    </div>
+                </script>
+            </div>
+        </div>        
+    </div>
+</body>
+</html>
