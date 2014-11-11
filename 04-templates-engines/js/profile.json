@@ -1,0 +1,57 @@
+{
+        "nombre": "Nicolas",
+        "apellido": "Villalonga",
+        "foto": "https://media.licdn.com/mpr/mpr/shrink_200_200/p/6/005/095/074/10f9c60.jpg",
+        "locationn": {
+            "pais": "Argentina",
+            "ciudad": "Mar del Plata"
+        },
+        "estudios": [
+            {
+                "fechaIni": "2014",
+                "tipo": "Terciario",
+                "titulo": "Tec Sistemas",
+                "institucion": "UTN"
+            },
+            {
+                "fechaIni": "2011",
+                "fechaFin": "2013",
+                "tipo": "Terciario",
+                "titulo": "Tec Programacion",
+                "institucion": "UTN"
+            },
+            {
+                "fechaIni": "",
+                "fechaFin": "2008",
+                "tipo": "Secundario",
+                "titulo": "Bachiller bilingue..",
+                "institucion": "Northern Hills"
+            }
+        ],
+        "idiomas": [
+            {
+                "idioma": "Ingles",
+                "examenes": ["SAT", "FIRST", "PET"]                
+            },
+            {
+                "idioma": "Frances",
+                "examenes": ["Delf A1", "Delf A2"]
+            }
+        ],
+        "trabajos": [
+            {
+                "fechaIni": "2012",
+                "fechaFin": "2014",
+                "empresa": "LSucre Helados",
+                "puesto": "Cajero",
+                "descripcion": "Venta, atencion publico, fabricacion helados"
+            },
+            {
+                "fechaIni": "2011",
+                "fechaFin": "2012",
+                "empresa": "Park Hyatt",
+                "puesto": "Busser Server / Food Runner",
+                "descripcion": "Atencion al publico..."
+            }
+        ]
+    }
