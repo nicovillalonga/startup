@@ -1,7 +1,9 @@
 define(['jquery', 'underscore', 'backbone', 'collections/movieCollection', 'views/movieView', 'models/movie'],
 function($, _, Backbone, MovieCollection, MovieView, Movie){
+    
     var CollectionView = Backbone.View.extend({
-         el: $('body'),
+    
+        el: $('body'),
          events: {
              'click #add': 'insertItem',
          },
