@@ -1,0 +1,21 @@
+
+<% _.each(trendss, function(trends){ %>
+    <% _.each(trends.trends, function(trend){ %>
+
+        <section>
+            <div class="trend">
+                <div class="lefft">
+                    <p><%= trend.name %></p>
+                    <p><%= trend.query %></p>
+                </div>
+                <div class="rightt">
+                    <p>></p>
+                </div>
+                <a href="#trendList/<%= trend.query %>"><span></span></a>
+                <div class="clear"></div>
+            </div>
+        </section>
+        
+    <% }); %>
+<% }); %>
+    

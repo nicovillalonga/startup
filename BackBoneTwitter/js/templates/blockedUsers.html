@@ -1,0 +1,17 @@
+<div class="input-group">
+    <span class="input-group-addon"></span>
+    <input id="nameUser" type="text" class="form-control" placeholder="Bloack a user">
+    <button id="addBlock" class="btn"><span class="glyphicon glyphicon-ban-circle"></span> Block!</button>
+</div>
+
+<% _.each(blocks, function (user) { %>
+
+    <section>             
+        <p class="lefft trend">@<%= user.name %></p>
+        <div class="rightt trend">
+            <button id="removeBlock" class="btn" value="<%= user.name %>"><span class="glyphicon glyphicon-adjust"></button>
+        </div>
+        <div class="clear"></div>
+    </section>
+
+<% }); %>

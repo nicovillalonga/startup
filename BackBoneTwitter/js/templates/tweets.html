@@ -1,0 +1,18 @@
+<% _.each(tweets, function (tweet) { %>
+    
+    <section>
+        <div class="tweet">
+            <div class="photo">
+                <img src="<%= tweet.user.profile_image_url %>" class="img-rounded">
+            </div>
+            <div class="lefft">
+                <p><%= tweet.user.name %></p><br>
+                <p><%= tweet.text %></p>
+                
+            </div>
+            <a href="#detail/<%= tweet.id %>"><span></span></a>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+<% }); %>

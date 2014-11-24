@@ -1,0 +1,25 @@
+<% _.each(trends, function (trend) { %>
+    <% _.each(trend, function(tweets){ %>
+        <% _.each(tweets, function(tweet){ %>
+            <% if(tweet.id) { %>
+            
+                <section>
+                    <div class="tweet">
+                        <div>
+                            <div class="photo">
+                                <img src="<%= tweet.user.profile_image_url %>" class="img-rounded">
+                            </div>
+                            <div class="lefft">
+                                <p><%= tweet.user.name %></p><br>
+                                <p><%= tweet.text %></p>
+                            </div>
+                            <a href="#detailTrend/<%= tweet.id %>/<%= trendQuery %>"><span></span></a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </section>
+                
+            <% } %>
+        <% }); %>
+    <% }); %>
+<% }); %>
