@@ -8,11 +8,9 @@ function($, _, Backbone, Tweets, templat){
         initialize: function(trendQ) {
             _.bindAll(this, 'render');
             
-            // tendria que ser el query, pero trae el name
-            
+            // tendria que ser el query, pero trae el name            
             console.log('asd');
             var qry = trendQ.trendQuery;
-            console.log(qry);
             
             
             
@@ -20,8 +18,9 @@ function($, _, Backbone, Tweets, templat){
             
             var trendsList = new Tweets('http://localhost:3000/trends?id=23424747');
             trendsList.fetch({async: false});
-            console.log(trendsList);
+            
             var trend = {};
+            
             
             _.each(trendsList.toJSON(), function(tr){
                 _.each(tr.trends, function(t){
@@ -32,39 +31,13 @@ function($, _, Backbone, Tweets, templat){
             });
             
             ///////-------  fin     -------///////
-            
 
-            
+
+            // instancio una collection con url del trend, asi trae los tweets de esa trend
             this.collection = new Tweets('http://localhost:3000/search?q=' + trend.query);//iria qry
             this.collection.fetch({async: false});
             
-            
-            
-            
-            
-            ///////-------       -------///////
-
-            
-            
-            /*var self = this;
-                        
-            _.each(self.collection.toJSON(), function (trend) {
-                _.each(trend, function(tweets){
-                    _.each(tweets, function(tweet){
-                        if(tweet.id) {
-                            console.log(tweet);
-                        }
-                    });
-                });
-            });*/
-            
-            ///////-------       -------///////
-            
-            
             this.trendQuery = trend.query;
-            console.log(trend.query);
-            console.log('asd');
-            console.log(this.trendQuery);
                         
             this.render();
         },
@@ -73,9 +46,9 @@ function($, _, Backbone, Tweets, templat){
             
         
         render: function() {
-            var query = this.trendQuery;
+            // le paso al template la collection que tiene los tweets de la trend y la query de la trend para poder hacer el link a un detailTrend
             this.$el.empty();
-            this.$el.html(this.template({trends: this.collection.toJSON(), trendQuery: query}));
+            this.$el.html(this.template({trends: this.collection.toJSON(), trendQuery: this.trendQuery}));
         }
     });
     

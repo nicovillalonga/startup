@@ -12,6 +12,8 @@ function($, _, Backbone, Blocked, BlockedUs, templat){
 
         initialize: function() {            
             _.bindAll(this, 'render');
+            
+            // instancio una collection de usuarios blocked y le cargo los usuarios que estan en localStorage
             this.collection = new BlockedUs();
             this.collection.add(JSON.parse(localStorage.getItem('blockedUsers') || '[]'));
             this.render();
@@ -19,15 +21,18 @@ function($, _, Backbone, Blocked, BlockedUs, templat){
         
         addBlockUser: function(e){
             
+            // instancio un usuario y lo agrego a la lista
             var val = $('#nameUser').val();
             var block = new Blocked({name: val});
             this.collection.add(block);
-            
+            // actualizo la localStorage
             localStorage.setItem('blockedUsers', JSON.stringify(this.collection));
+            
             this.render();
         },
         
         removeBlock: function(e){
+            
             var val = e.target.value;
             if(val)
             {
@@ -51,8 +56,9 @@ function($, _, Backbone, Blocked, BlockedUs, templat){
         },
 
         template: _.template( templat ),
-
+        
         render: function() {
+            // le paso al template la collection con los usuarios
             this.$el.empty();
             this.$el.html(this.template({blocks: this.collection.toJSON()}));
 //            return this;

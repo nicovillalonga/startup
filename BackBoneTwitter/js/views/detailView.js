@@ -8,23 +8,13 @@ function($, _, Backbone, Tweets, templat){
         initialize: function(idTw) {
             _.bindAll(this, 'render');            
             
+            // recupero los tweets grales
             var tweets = new Tweets('http://localhost:3000/timeline?count=50');
             tweets.fetch({async: false});
-            console.log(tweets);
                         
+            // guardo el id del tweet que quiero mostrar, que viene por routes. recupero el tweet con el id
             var idTweet = idTw.idTweet;
-            console.log(idTweet);
-            
-            var detailTweet = {};
-            _.each(tweets.toJSON(), function(tweet){
-                if(tweet.id == idTweet){
-                    detailTweet = tweet;
-                    console.log(detailTweet);
-                }
-            });
-            
-            this.detailTweet = detailTweet;
-            console.log(this.detailTweet);
+            this.detailTweet = tweets.get(idTweet);
             
             this.render();
         },
@@ -32,7 +22,10 @@ function($, _, Backbone, Tweets, templat){
         template: _.template( templat ),
 
         render: function() {
+            // le paso al template el tweet
             this.$el.empty();
+            var tweet = self.detailTweet;
+            
             $(this.el).html(this.template({tweet: this.detailTweet}));
         }
     });

@@ -1,13 +1,26 @@
 <section>        
     <div class="tweet">
-        <div class="photo">
-                <img src="<%= tweet.user.profile_image_url %>" class="img-rounded">
+        
+        <div>
+            <div class="photo">
+                <img src="<%= tweet.attributes.user.profile_image_url %>" class="img-rounded">
+            </div>
+            <div class="lefft">
+                <strong><p><%= tweet.attributes.user.name %></p></strong>
+                <p>@<%= tweet.attributes.user.screen_name %></p>
+            </div>
         </div>
+        <div class="clear"></div><br>        
         
         <div class="lefft">
-                <p><%= tweet.user.name %></p><br>
-                <p><%= tweet.text %></p>
+            <p><%= tweet.attributes.text %></p>
         </div>
         <div class="clear"></div>
+        
+        <%= tweet.attributes.created_at %>
+        
+        <section>
+            <p><strong><%= tweet.attributes.retweet_count %></strong> RETWETS   <strong><%= tweet.attributes.favorite_count %></strong> FAVORITES</p>
+        </section>
     </div>
 </section>

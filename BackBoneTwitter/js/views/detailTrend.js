@@ -7,18 +7,17 @@ function($, _, Backbone, Tweets, templat){
 
         initialize: function(data) {
             _.bindAll(this, 'render');            
-            
-            var idTweet = data.idTweet;  
+                        
+            // recupero el id del tweet y el query del trend que quiero mostrar, vienen por routes
+            var idTweet = data.idTweet;
+            // tendria que ser trend query pero trae el ternd name!
             var trendQuery = data.trendQuery;
-            console.log(idTweet);
-            console.log(trendQuery);
             
             
             ///////------- lo mismo que terndTweets no va, es un parche para obtener el trend query -------///////
             
             var trendsList = new Tweets('http://localhost:3000/trends?id=23424747');
             trendsList.fetch({async: false});
-            console.log(trendsList);
             var trend = {};
             
             _.each(trendsList.toJSON(), function(tr){
@@ -32,21 +31,14 @@ function($, _, Backbone, Tweets, templat){
             ///////-------  fin     -------///////
             
             
+            
+            // recupero los tweets de la trend que me pasa routes
             var tweets = new Tweets('http://localhost:3000/search?q=' + trend.query);
             tweets.fetch({async: false});
-            console.log(tweets);
             
-            this.detailTweet = {};
-            var self = this;
-            
-            _.each(tweets.toJSON(), function(tweet){
-                if(tweet.id == idTweet){
-                    self.detailTweet = tweet;
-                    console.log(detailTweet);
-                }
-            });
-            
-            console.log(this.detailTweet);
+            //recupero el tweet de los trends con el id que se pasa.
+            //es undefined porque el fetch trae 15 tweets, para cuando se busca ya se actualizaron y no esta mas en esos 15!
+            var detailTweet = tweets.get(idTweet);                        
             
             this.render();
         },
@@ -54,6 +46,7 @@ function($, _, Backbone, Tweets, templat){
         template: _.template( templat ),
 
         render: function() {
+            // le paso al template el tweet a mostrar
             var self = this;
             this.$el.empty();
             $(this.el).html(this.template({tweet: self.detailTweet}));

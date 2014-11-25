@@ -8,9 +8,10 @@ function($, _, Backbone, Tweets, templat){
         initialize: function() {
             _.bindAll(this, 'render');
             
+            // instancio collection con las trends de Arg
             this.collection = new Tweets('http://localhost:3000/trends?id=23424747');
             this.collection.fetch({async: false});
-            console.log(this.collection);
+            
             this.render();
         },
 
@@ -18,6 +19,7 @@ function($, _, Backbone, Tweets, templat){
             
         
         render: function() {
+            // le paso al template la collection con las trends
             this.$el.empty();
             this.$el.html(this.template({trendss: this.collection.toJSON()}));
         }

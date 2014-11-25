@@ -5,7 +5,7 @@ function(Backbone, TimelineView, BlockedUsView, DetailView, TrendsView, TrendTwe
                 
         routes: {
             // arranca en el blockUser porque no tiene que pedir data... en realidad arranca en timeline
-            '' : 'blockedUsers',
+            '' : 'timeline',
             'timeline' : 'timeline',
             'blockedUsers' : 'blockedUsers',
             'detail/:id' : 'detail',
